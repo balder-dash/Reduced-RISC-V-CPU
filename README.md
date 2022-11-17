@@ -1,4 +1,8 @@
 # Reduced-RISC-V-CPU
 Lab 4 groupwork
 
-YEs.
+Group members:
+Clifford Chan
+Erenkai Zhu
+Jim Zhu
+Ajanthan Kanagasabapathy
