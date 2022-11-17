@@ -2,9 +2,9 @@
 Lab 4 groupwork
 
 Group members:
-Clifford Chan
-Ajanthan Kanagasabapathy
-Erenkai Zhu
+Clifford Chan   
+Ajanthan Kanagasabapathy   
+Erenkai Zhu   
 Jim Zhu
 
 Tasks for each member:
