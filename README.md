@@ -15,7 +15,7 @@ Tasks for each member:
 
 We will discuss who does what soon.
 
-On the repo for your team, you should have:
+On the repo for your team, we should have:
 - A README.md that show evidences of the CPU working properly with the program.
 - A short narrative to state the challenges you encountered as a team.
 - Comments about any design decisions you made that are not obvious.
