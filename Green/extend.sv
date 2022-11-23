@@ -9,6 +9,6 @@ module extend #(
 
 always_comb begin
     if (ImmSrc) ImmOp = { {WIDTH-12{Imm[31]}}, Imm[31:20] };                           //I-type when ImmSrc = 1
-    else        ImmOp = { {WIDTH-12{Imm[31]}}, Imm[7], Imm[30:25], Imm[11:8], 1'b0 };  //J-type
+    else        ImmOp = { {WIDTH-12{Imm[31]}}, Imm[7], Imm[30:25], Imm[11:8], 1'b0 };  //J-type when ImmSrc = xx
 end
 endmodule
