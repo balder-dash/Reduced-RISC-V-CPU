@@ -1,6 +1,6 @@
 #include <verilated.h>
 #include <verilated_vcd.h>
-#include <Vtop.h>
+#include <Vgreen_top.h>
 
 int main(int argc, char **argv, char **env) {
     int i;
@@ -8,7 +8,7 @@ int main(int argc, char **argv, char **env) {
 
     Verilated:: commandArgs(argc, argv);
     
-    Vcounter* top = new Vcounter;
+    Vgreen_top* top = new Vgreen_top;
 
     Verilated::traceEverOn(true);
     VerilatedVcdC* tfp = new VerilatedVcdC;
@@ -17,7 +17,7 @@ int main(int argc, char **argv, char **env) {
 
     top->clk = 1;
     top->rst = 1;
-    top->en = 0;
+    top->en = 1;
 
     for (i = 0; i < 300; i++){
 
@@ -27,8 +27,8 @@ int main(int argc, char **argv, char **env) {
             top->clk = !top->clk;
             top->eval ();
         }
-        top->rst =(i < 2 | i == 15);
-        top->en = (i>4);
+        top->rst = 0;
+        
         if (Verilated::gotFinish()) exit(0);
     }
     tfp->close();

@@ -1,4 +1,4 @@
-module green #(
+module green_top #(
     parameter ADDRESS_WIDTH = 32,
 
               DATA_WIDTH = 8
@@ -7,7 +7,6 @@ module green #(
     input rst,
     input en,
 
-    input logic [ADDRESS_WIDTH-1:0] PC,
     input logic [DATA_WIDTH-1:0] EQ,
 
     output logic [ADDRESS_WIDTH-1:0] ImmOp,
@@ -19,6 +18,7 @@ module green #(
    
     logic [ADDRESS_WIDTH-1:0] instr,
     logic ImmSrc,
+    logic [ADDRESS_WIDTH-1:0] PC
 
 //green
 
