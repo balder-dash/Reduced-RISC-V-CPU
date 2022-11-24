@@ -1,4 +1,4 @@
-module PCReg #(
+module PC_Reg #(
     parameter WIDTH = 32
 )(
 // interface signals
@@ -10,7 +10,7 @@ module PCReg #(
 );
 
 always_ff @ (posedge clk, posedge rst)
-  if (rst) count <= 32'b0;
-  else     count <= next_PC;
+  if (rst) PC <= 32'b0;
+  else     PC <= next_PC;
 
 endmodule
