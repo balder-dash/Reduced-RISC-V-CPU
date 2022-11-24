@@ -1,6 +1,6 @@
-#include <verilated.h>
-#include <verilated_vcd.h>
-#include <Vgreen_top.h>
+#include "verilated.h"
+#include "verilated_vcd_c.h"
+#include "Vgreen_top.h"
 
 int main(int argc, char **argv, char **env) {
     int i;
@@ -28,6 +28,7 @@ int main(int argc, char **argv, char **env) {
             top->eval ();
         }
         top->rst = 0;
+        top->EQ = 1;
         
         if (Verilated::gotFinish()) exit(0);
     }

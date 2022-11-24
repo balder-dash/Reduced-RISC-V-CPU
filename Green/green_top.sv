@@ -7,34 +7,37 @@ module green_top #(
     input rst,
     input en,
 
-    input logic [DATA_WIDTH-1:0] EQ,
+    input logic EQ,
 
     output logic [ADDRESS_WIDTH-1:0] ImmOp,
     output logic RegWrite,
     output logic ALUctrl,
     output logic ALUsrc,
-    output logic PCsrc, 
+    output logic PCsrc,
+
+    output logic [ADDRESS_WIDTH-1:0] instr,
+    output logic ImmSrc,
+    output logic [ADDRESS_WIDTH-1:0] PC
 );
    
-    logic [ADDRESS_WIDTH-1:0] instr,
-    logic ImmSrc,
-    logic [ADDRESS_WIDTH-1:0] PC
+    // logic [ADDRESS_WIDTH-1:0] instr;
+    // logic ImmSrc;
+    // logic [ADDRESS_WIDTH-1:0] PC;
 
 //green
 
-counter count (
-    .counter addrCounter(
+counter addrCount (
     .clk (clk),
     .rst (rst),
     .en (en),
     .count (PC)
 );
-)
+
 
 instrmem rom (
     .A(PC),
     .RD(instr)
-)
+);
 
 control ctrl (
     .EQ(EQ),
@@ -42,14 +45,14 @@ control ctrl (
     .RegWrite(RegWrite),
     .ALUctrl(ALUctrl),
     .ALUsrc(ALUsrc),
-    .Immsrc(Immsrc),
+    .ImmSrc(ImmSrc),
     .PCsrc(PCsrc)
-)
+);
 
 extend sign_ext (
     .Imm(instr),  //same here
-    .Immsrc(Immsrc),
+    .ImmSrc(ImmSrc),
     .ImmOp(ImmOp)
-)
+);
 
 endmodule
