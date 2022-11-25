@@ -1,6 +1,6 @@
 #include "verilated.h"
 #include "verilated_vcd_c.h"
-#include "Vgreen_top.h"
+#include "Vcpu.h"
 
 int main(int argc, char **argv, char **env) {
     int i;
@@ -8,12 +8,12 @@ int main(int argc, char **argv, char **env) {
 
     Verilated:: commandArgs(argc, argv);
     
-    Vgreen_top* top = new Vgreen_top;
+    Vcpu* top = new Vcpu;
 
     Verilated::traceEverOn(true);
     VerilatedVcdC* tfp = new VerilatedVcdC;
     top->trace(tfp,99);
-    tfp->open ("counter.vcd");
+    tfp->open ("cpu.vcd");
 
     top->clk = 1;
     top->rst = 1;
