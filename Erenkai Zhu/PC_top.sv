@@ -1,4 +1,4 @@
-module top #(
+module PC_top #(
   parameter WIDTH = 32
 
 
