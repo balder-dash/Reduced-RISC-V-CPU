@@ -1,6 +1,6 @@
 module mux2 #(
     parameter ADDRESS_WIDTH = 32
-              
+
 )(
     input logic [ADDRESS_WIDTH-1:0] regOp2,    
     input logic [ADDRESS_WIDTH-1:0] ImmOp,
@@ -10,5 +10,6 @@ module mux2 #(
 
 );
     assign ALUop2 = ALUsrc ? regOp2:ImmOp;
+
 
 endmodule
