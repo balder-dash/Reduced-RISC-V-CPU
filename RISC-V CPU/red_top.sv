@@ -30,7 +30,7 @@ module red_top #(
    logic  [DATA_WIDTH-1:0] ALUop1;
    logic [DATA_WIDTH-1:0] regOp2;
    logic [DATA_WIDTH-1:0] ALUout;
-  logic [DATA_WIDTH-1:0] ALUop2;
+    logic [DATA_WIDTH-1:0] ALUop2; //Why this line makes everything explode is anyone's guess
 ram ram (
   .clk (clk),
   .AD1 (rs1),
