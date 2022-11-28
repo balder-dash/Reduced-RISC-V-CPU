@@ -13,7 +13,7 @@ module control #(
 logic [6:0] opcode;
 logic [14:12] fn3;
 logic [31:25] fn7;
-logic [6:0] flags;
+    logic [6:0] flags; //suspected "circular logic" is due to line 30, but upon removal RegWrite, ALUctrl etc will not be written.
 
 assign flags = {RegWrite, ALUctrl[3-1:0], ALUsrc, ImmSrc, PCsrc};
 assign opcode = instr[6:0];
