@@ -9,14 +9,15 @@ module ram #(
 
     input logic WE3,
     input logic [DATA_WIDTH-1:0] WD3,
-    input logic [DATA_WIDTH-1:0] ALUout,
 
+    output logic [DATA_WIDTH-1:0] a0,
     output logic [DATA_WIDTH-1:0] RD1,
     output logic [DATA_WIDTH-1:0] RD2
 
-
 );
+
 logic [DATA_WIDTH-1:0] ram_array [2**ADDRESS_WIDTH-1:0];
+assign ram_array[5'b00000] = {DATA_WIDTH{1'b0}};
 
 //initial begin
     //$display("Loading ram2port.");
@@ -26,8 +27,10 @@ logic [DATA_WIDTH-1:0] ram_array [2**ADDRESS_WIDTH-1:0];
 always_ff @(posedge clk) begin
      RD1 <= ram_array [AD1];
      RD2 <= ram_array [AD2];
+     a0 <= ram_array [5'b01010];
      if (WE3 == 1'b1)
-        ram_array[WD3] <= ALUout;
+        ram_array[AD3] <= WD3;
 end;
+
 
 endmodule
