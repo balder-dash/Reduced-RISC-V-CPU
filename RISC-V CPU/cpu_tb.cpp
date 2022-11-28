@@ -27,7 +27,6 @@ int main(int argc, char **argv, char **env) {
             top->eval ();
         }
         top->rst = 0;
-        top->EQ = 1;
         
         if (Verilated::gotFinish()) exit(0);
     }
