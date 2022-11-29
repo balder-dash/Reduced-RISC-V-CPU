@@ -24,13 +24,13 @@ assign ram_array[5'b00000] = {DATA_WIDTH{1'b0}};
     //$readmemh("sinerom.mem", rom_array);
 //end;
 
+//two read ports of reg file should be async, write port sync
 always_ff @(posedge clk) begin
-     RD1 <= ram_array [AD1];
-     RD2 <= ram_array [AD2];
+    RD1 <= ram_array [AD1];
+    RD2 <= ram_array [AD2];
      a0 <= ram_array [5'b01010];
      if (WE3 == 1'b1)
         ram_array[AD3] <= WD3;
-end;
-
+end
 
 endmodule

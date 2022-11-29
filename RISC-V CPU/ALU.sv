@@ -21,18 +21,15 @@ always_comb begin
 
         3'b011:  ALUout = ALUop1 | ALUop2;
 
-
-        3'b101:  ALUout = $signed(ALUop1) < $signed (ALUop2)  ? 1:0 ;
+        3'b101:  ALUout = ( $signed(ALUop1) < $signed (ALUop2) ) ? 1:0 ;
 
         default: ALUout = 0;
-    
-
 
  // SLT and SLTU perform signed and unsigned compares respectively, writing 1 to rd if rs1 < rs2, 0 otherwise.
-        
+
     endcase
 end
-    assign EQ =  ALUop1 != ALUop2 ? 1:0;
-    
+
+assign EQ =  (ALUop1 != ALUop2) ? 1:0;    //output 1 if not equal
 
 endmodule

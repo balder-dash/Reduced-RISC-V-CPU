@@ -3,23 +3,22 @@ module cpu #(
 )(
     input clk,
     input rst,
-    output [ADDRESS_WIDTH-1:0] a0,
+    output [ADDRESS_WIDTH-1:0] a0
 
-    output logic EQ,
-
-    output logic RegWrite,
-    output logic [3-1:0] ALUctrl, //needs to be 3 bit
-    output logic ALUsrc,
-    output logic ImmSrc,
-    output logic [ADDRESS_WIDTH-1:0] instr
-    
 );
    
     // logic [ADDRESS_WIDTH-1:0] instr;
     // logic ImmSrc;
+    logic EQ;
     logic [ADDRESS_WIDTH-1:0] PC;
     logic [ADDRESS_WIDTH-1:0] ImmOp;
     logic PCsrc;
+    logic RegWrite;
+    logic [3-1:0] ALUctrl; //needs to be 3 bit
+    logic ALUsrc;
+    logic ImmSrc;
+    logic [ADDRESS_WIDTH-1:0] instr;
+    
 
 //blue
 PC_top blue (
