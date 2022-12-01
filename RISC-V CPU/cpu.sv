@@ -37,7 +37,7 @@ instrmem rom (
 
 control ctrl (
     .EQ(EQ),
-    .instr(instr), //how to take the last 7 bits of instr from rom
+    .instr(instr[6:0]), //how to take the last 7 bits of instr from rom
     .RegWrite(RegWrite),
     .ALUctrl(ALUctrl),
     .ALUsrc(ALUsrc),
