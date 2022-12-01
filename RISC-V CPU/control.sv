@@ -22,25 +22,11 @@ assign fn7 = instr[31:25];
 always_comb begin
     casez(opcode) //use begin-end for default and the opcode stuff
         7'b0010011: flags = 7'b1000110; //for op = 19
-        7'b1100011: flags = EQ ? 7'b0001001: 7'b0000000; //for op = 99 and EQ is 1 (which means not eq = true), (set ALUCTRL to subtract - L7 S18)
+        7'b1100011: flags = {7'b000100, EQ} //for op = 99 and EQ is 1 (which means not eq = true), (set ALUCTRL to subtract - L7 S18)
         default: flags = 7'b0000000;
     endcase
-    {RegWrite, ALUctrl[3-1:0], ALUsrc, ImmSrc, PCsrc} = flags;
 end
 
 assign {RegWrite, ALUctrl[3-1:0], ALUsrc, ImmSrc, PCsrc} = flags;
-/*
-logic branch = 7b'1100011; //99
-logic imm = 2b'11;  //19
-
-    //if certain bits are output from the instr mem, then certain flags turn on
-    //THink of a better way to do this
-
-    assign RegWrite = (instr == imm) ? 1'b1 : 1'b0; 
-    assign ALUctrl = (instr == branch && EQ) ? 1'b1 : 1'b0;   
-    assign ALUsrc = (instr == imm) ? 1'b1 : 1'b0;    
-    assign ImmSrc = (instr == imm) ? 1'b1 : 1'b0;    
-    assign PCsrc = (instr == branch && EQ) ? 1'b1 : 1'b0;
-*/
 
 endmodule

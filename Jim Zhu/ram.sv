@@ -25,12 +25,12 @@ assign ram_array[5'b00000] = {DATA_WIDTH{1'b0}};
 //end;
 
 always_ff @(posedge clk) begin
-     RD1 <= ram_array [AD1];
-     RD2 <= ram_array [AD2];
      a0 <= ram_array [5'b01010];
      if (WE3 == 1'b1)
         ram_array[AD3] <= WD3;
 end;
 
+assign RD1 = ram_array [AD1];
+assign RD2 = ram_array [AD2];
 
 endmodule
