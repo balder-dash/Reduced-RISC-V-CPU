@@ -1,7 +1,5 @@
 module green_top #(
-    parameter ADDRESS_WIDTH = 32,
-
-              DATA_WIDTH = 8
+    parameter ADDRESS_WIDTH = 32
 )(
     input clk,
     input rst,

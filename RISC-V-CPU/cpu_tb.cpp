@@ -1,6 +1,6 @@
 #include "verilated.h"
 #include "verilated_vcd_c.h"
-#include "Vgreen_top.h"
+#include "Vcpu.h"
 
 int main(int argc, char **argv, char **env) {
     int i;
@@ -8,17 +8,16 @@ int main(int argc, char **argv, char **env) {
 
     Verilated:: commandArgs(argc, argv);
     
-    Vgreen_top* top = new Vgreen_top;
+    Vcpu* top = new Vcpu;
 
     Verilated::traceEverOn(true);
     VerilatedVcdC* tfp = new VerilatedVcdC;
     top->trace(tfp,99);
-    tfp->open ("counter.vcd");
+    tfp->open ("cpu.vcd");
 
     top->clk = 1;
-    top->rst = 1;
 
-    for (i = 0; i < 300; i++){
+    for (i = 0; i < 10000; i++){
 
         //dump var into VCD file and toggle clk
         for(clk = 0; clk < 2; clk++){
@@ -26,8 +25,6 @@ int main(int argc, char **argv, char **env) {
             top->clk = !top->clk;
             top->eval ();
         }
-        top->rst = 0;
-        top->EQ = 1;
         
         if (Verilated::gotFinish()) exit(0);
     }
