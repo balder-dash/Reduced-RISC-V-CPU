@@ -1,4 +1,4 @@
-module red_top #(
+ module red_top #(
     parameter ADDRESS_WIDTH = 5,
               ALUctrl_WIDTH = 3,
               DATA_WIDTH = 32
@@ -19,18 +19,15 @@ module red_top #(
   output logic  EQ,
   output logic [DATA_WIDTH-1:0] a0
 
-  // output logic [DATA_WIDTH-1:0] ALUop2,
-  //  output logic  [DATA_WIDTH-1:0] ALUop1,
-  //  output logic [DATA_WIDTH-1:0] regOp2,
-  //  output logic [DATA_WIDTH-1:0] ALUout,
-
 );
   
-   logic  [DATA_WIDTH-1:0] ALUop1;
+   logic [DATA_WIDTH-1:0] ALUop1;
    logic [DATA_WIDTH-1:0] regOp2;
    logic [DATA_WIDTH-1:0] ALUout;
-   logic [DATA_WIDTH-1:0] ALUop2; //Why this line makes everything explode is anyone's guess
 
+  //  logic [DATA_WIDTH-1:0] RD2;
+  //  logic [ADDRESS_WIDTH-1:0] AD2;
+  
 ram ram (
   .clk (clk),
   .AD1 (rs1),
@@ -43,17 +40,11 @@ ram ram (
   .RD2 (regOp2)
 );
 
-mux2 mux (
-  .ALUsrc (ALUsrc),
-  .ImmOp (ImmOp),
-  .regOp2 (regOp2),
-  .ALUop2 (ALUop2)
-
-);
-
 ALU ALU (
    .ALUop1 (ALUop1),
-   .ALUop2 (ALUop2),
+   .ALUsrc (ALUsrc),
+   .ImmOp (ImmOp),
+   .regOp2 (regOp2),
    .ALUctrl (ALUctrl),
    .ALUout (ALUout),
    .EQ (EQ)

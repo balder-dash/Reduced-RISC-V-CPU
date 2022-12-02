@@ -16,9 +16,8 @@ int main(int argc, char **argv, char **env) {
     tfp->open ("cpu.vcd");
 
     top->clk = 1;
-    top->rst = 1;
 
-    for (i = 0; i < 300; i++){
+    for (i = 0; i < 10000; i++){
 
         //dump var into VCD file and toggle clk
         for(clk = 0; clk < 2; clk++){
@@ -26,7 +25,6 @@ int main(int argc, char **argv, char **env) {
             top->clk = !top->clk;
             top->eval ();
         }
-        top->rst = 0;
         
         if (Verilated::gotFinish()) exit(0);
     }

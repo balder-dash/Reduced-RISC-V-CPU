@@ -2,11 +2,14 @@
 module Top #(
     parameter ADDRESS_WIDTH = 32,
 
-              DATA_WIDTH = 8
+              DATA_WIDTH = 32
 )(
   input logic clk,
   input logic  rst,
-  output logic [DATA_WIDTH-1:0] a0
+  output logic [DATA_WIDTH-1:0] a0,
+  output logic [ADDRESS_WIDTH-1:0] instr,
+  output logic [DATA_WIDTH-1:0] ALUout,
+  output logic [ADDRESS_WIDTH-1:0] ImmOp
 );
 
     logic [19:15] AD1,    
@@ -14,9 +17,7 @@ module Top #(
     logic [11:7] AD3,
     logic WE3,
     logic [DATA_WIDTH-1:0] WD3,
-    logic [ADDRESS_WIDTH-1:0] ImmOp,
 
-    logic [ADDRESS_WIDTH-1:0] instr,
     logic RegWrite,
     logic ALUctrl,
     logic ALUsrc,
@@ -26,7 +27,6 @@ module Top #(
     logic   [11:0]       Imm, 
 
     logic [ADDRESS_WIDTH-1:0] PC,
-    logic [DATA_WIDTH-1:0] ALUout,
     logic [DATA_WIDTH-1:0] EQ,
 
 //PC
